@@ -89,6 +89,7 @@ class MyEncoder:
         self.old2new = {x:i for i, x in enumerate(set(old_tokens))}
         self.new2old = {self.old2new[i]:i for i in self.old2new.keys()}
         self.tokens = [self.old2new[x] for x in old_tokens]
+        self.vocab_size = len(set(self.tokens))
 
     def encode(self, s):
         return [self.old2new[x] for x in self.enc.encode(s)]
